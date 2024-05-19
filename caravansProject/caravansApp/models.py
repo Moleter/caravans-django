@@ -11,7 +11,10 @@ class Caravan(models.Model):
 
 class CaravanImages(models.Model):
     caravan = models.ForeignKey(Caravan, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to="images/")
+    image = models.ImageField(upload_to="images")
+
+    def __str__(self) -> str:
+        return f"{self.caravan} {self.image}"
 
 class Calendar(models.Model):
     date = DateRangeField()
