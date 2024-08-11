@@ -21,10 +21,8 @@ const checkReservation = (day) => {
         ) {
           if (day >= startDate.getDate() && day <= endDate.getDate()) {
             return true;
-          } else return false;
-        } else return false;
-      } else {
-        return false;
+          }
+        }
       }
     }
   }
@@ -89,12 +87,7 @@ const renderCalendar = () => {
   }
 
   for (let i = 1; i <= lastDay; i++) {
-    let isReservation = checkReservation(i);
-    if (
-      isReservation
-      // i === new Date().getDate() &&
-      // date.getMonth() === new Date().getMonth()
-    ) {
+    if (checkReservation(i)) {
       days += `<div class="today">${i}</div>`;
     } else {
       days += `<div>${i}</div>`;
@@ -109,6 +102,7 @@ const renderCalendar = () => {
 
 document.querySelector(".prev").addEventListener("click", () => {
   date.setMonth(date.getMonth() - 1);
+  console.log(date);
   renderCalendar();
 });
 

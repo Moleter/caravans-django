@@ -71,9 +71,8 @@
 }
 
 .days div:hover:not(.today) {
-  background-color: #262626;
-  border: 0.2rem solid #777;
-  cursor: pointer;
+  background-color: #d35400;
+  border: 0.2rem solid #e2e2e2;
 }
 
 .prev-date,
@@ -82,5 +81,5 @@
 }
 
 .today {
-  background-color: #d36720;
+  background-color: #535353;
 }
