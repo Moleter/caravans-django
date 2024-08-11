@@ -1,5 +1,35 @@
 const date = new Date();
 
+const data = JSON.parse(document.getElementById("calendarData").textContent);
+
+let startDate;
+let endDate;
+
+const checkReservation = (day) => {
+  for (let index = 0; index < data.length; index++) {
+    const element = data[index];
+    {
+      startDate = new Date(element.startDate);
+      endDate = new Date(element.endDate);
+      if (
+        date.getFullYear() === startDate.getFullYear() ||
+        date.getFullYear() === endDate.getFullYear()
+      ) {
+        if (
+          date.getMonth() === startDate.getMonth() ||
+          date.getMonth() === endDate.getMonth()
+        ) {
+          if (day >= startDate.getDate() && day <= endDate.getDate()) {
+            return true;
+          } else return false;
+        } else return false;
+      } else {
+        return false;
+      }
+    }
+  }
+};
+
 const renderCalendar = () => {
   date.setDate(1);
 
@@ -48,8 +78,6 @@ const renderCalendar = () => {
 
   let days = "";
 
-  console.log(firstDayIndex - 1, prevLastDay);
-
   let x;
 
   for (
@@ -61,9 +89,11 @@ const renderCalendar = () => {
   }
 
   for (let i = 1; i <= lastDay; i++) {
+    let isReservation = checkReservation(i);
     if (
-      i === new Date().getDate() &&
-      date.getMonth() === new Date().getMonth()
+      isReservation
+      // i === new Date().getDate() &&
+      // date.getMonth() === new Date().getMonth()
     ) {
       days += `<div class="today">${i}</div>`;
     } else {

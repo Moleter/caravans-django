@@ -1,6 +1,4 @@
 .calendar {
-  /* width: 45rem; */
-  /* height: 52rem; */
   color: white;
 }
 
@@ -37,6 +35,7 @@
   padding: 0 0.4rem;
   display: flex;
   align-items: center;
+  color: #f09050;
 }
 
 .weekdays div {
