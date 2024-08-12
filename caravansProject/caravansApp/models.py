@@ -6,6 +6,9 @@ from django.utils.translation import gettext_lazy as _
 class Caravan(models.Model):
     name = models.CharField(_("Name"), max_length=255)
     description = models.TextField(_("Description"))
+    seating = models.CharField(_("Seatings"), max_length=63)
+    transmission = models.CharField(_("transmission"), max_length=63)
+    year_of_production = models.IntegerField(_("year"))
 
     def __str__(self) -> str:
         return self.name

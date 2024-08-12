@@ -81,30 +81,31 @@
                     <div class="row gx-4 gx-lg-5">
                         <div class="col-lg-3 col-md-6 text-center">
                             <div class="mt-5">
-                                <div class="mb-2"><i class="bi-gem fs-1 text-primary"></i></div>
-                                <h3 class="h4 mb-2">Silnik</h3>
-                                <p class="text-muted mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe nihil, ullam nemo, labore debitis non porro adipisci eaque sit omnis dolores iure temporibus quod doloribus. Sit optio cupiditate totam beatae?</p>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 text-center">
-                            <div class="mt-5">
-                                <div class="mb-2"><i class="bi-bicycle fs-1 text-primary"></i></div>
-                                <h3 class="h4 mb-2">Skrzynia biegów</h3>
-                                <p class="text-muted mb-0">Możliwość, zabranie ze sobą rowerów.</p>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 text-center">
-                            <div class="mt-5">
-                                <div class="mb-2"><i class="bi-globe fs-1 text-primary"></i></div>
+                                <div class="mb-2"><i class="bi bi-people fs-1 text-primary"></i></div>
                                 <h3 class="h4 mb-2">Liczba miejsc</h3>
-                                <p class="text-muted mb-0">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint, accusamus in. Veritatis quo optio esse deserunt autem officiis dignissimos soluta quae error blanditiis illum et laudantium rem, nihil ducimus atque?</p>
+                                <p class="text-muted mb-0 h4">{{ caravan.seating }}</p>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-6 text-center">
                             <div class="mt-5">
-                                <div class="mb-2"><i class="bi-heart fs-1 text-primary"></i></div>
+                                <div class="mb-2"><i class="bi bi-speedometer fs-1 text-primary"></i></div>
+                                <h3 class="h4 mb-2">Parametry silnika</h3>
+                                <p class="text-muted mb-0 h4">{{ caravan.transmission }}</p>
+                                <p class="text-muted mb-0 h4">120 KM</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 text-center">
+                            <div class="mt-5">
+                                <div class="mb-2"><i class="bi bi-info-circle fs-1 text-primary"></i></div>
+                                <h3 class="h4 mb-2">Dodatkowe informacje</h3>
+                                <p class="text-muted mb-0">{{ caravan.description }}</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 text-center">
+                            <div class="mt-5">
+                                <div class="mb-2"><i class="bi bi-calendar fs-1 text-primary"></i></div>
                                 <h3 class="h4 mb-2">Rok produkcji</h3>
-                                <p class="text-muted mb-0">Lorem</p>
+                                <p class="text-muted mb-0 h4">{{ caravan.year_of_production }}</p>
                             </div>
                         </div>
                     </div>
@@ -162,9 +163,9 @@
             <div class="container px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-lg-8 col-xl-6 text-center">
-                        <h2 class="mt-0">Let's Get In Touch!</h2>
+                        <h2 class="mt-0">Skontaktuj się z nami, już teraz!</h2>
                         <hr class="divider" />
-                        <p class="text-muted mb-5">Ready to start your next project with us? Send us a messages and we will get back to you as soon as possible!</p>
+                        <p class="text-muted mb-5">Jesteś gotowy, by podróżować, naszymi Kamperami? Wyślin nam wiadomość z zapytaniem, a postaramy się na nią odpowiedzieć, jak najszybciej to moźliwe!</p>
                     </div>
                 </div>
                 <div class="row gx-4 gx-lg-5 justify-content-center mb-5">
@@ -220,14 +221,14 @@
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-lg-4 text-center mb-5 mb-lg-0">
                         <i class="bi-phone fs-2 mb-3 text-muted"></i>
-                        <div>+1 (555) 123-4567</div>
+                        <div>+48 123 123 123</div>
                     </div>
                 </div>
             </div>
         </section>
         <!-- Footer-->
         <footer class="bg-light py-5">
-            <div class="container px-4 px-lg-5"><div class="small text-center text-muted">Copyright &copy; 2023 - Company Name</div></div>
+            <div class="container px-4 px-lg-5"><div class="small text-center text-muted">Copyright &copy; 2024 - Partner Kampery</div></div>
         </footer>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
