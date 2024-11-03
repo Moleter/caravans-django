@@ -80,24 +80,31 @@
                     <hr class="divider" />
                     <p class="text-center">{{ caravan.description }}</p>
                     <div class="row gx-4 gx-lg-5">
-                        <div class="col-lg-4 text-center">
+                        <div class="col-lg-3 col-sm-6 text-center">
                             <div class="mt-5">
-                                <div class="mb-2"><i class="bi bi-people fs-1 text-primary"></i></div>
+                                <div class="mb-2"><img src="{% static "assets/img/people.png" %}" alt="Liczba miejsc" height="50px" width="50px"></div>
                                 <h3 class="h4 mb-2">Liczba miejsc</h3>
                                 <p class="text-muted mb-0 h4">{{ caravan.seating }}</p>
                             </div>
                         </div>
-                        <div class="col-lg-4 text-center">
+                        <div class="col-lg-3 col-sm-6 text-center">
                             <div class="mt-5">
-                                <div class="mb-2"><i class="bi bi-speedometer fs-1 text-primary"></i></div>
+                                <div class="mb-2"><img src=" {% static "assets/img/reduced.png" %} " alt="Parametry Silnika" height="50px" width="50px"></div>
                                 <h3 class="h4 mb-2">Parametry silnika</h3>
+                                <p class="text-muted mb-0 h4">{{ caravan.engine }}</p>
+                                <p class="text-muted mb-0 h4">{{ caravan.horse_power }} KM</p>
+                            </div>
+                        </div> 
+                       <div class="col-lg-3 col-sm-6 text-center">
+                            <div class="mt-5">
+                                <div class="mb-2"><img src="{% static "assets/img/automatic-transmission.png" %}" alt="Skrzynia biegów" height="50px" width="50px"></div>
+                                <h3 class="h4 mb-2">Skrzynia biegów</h3>
                                 <p class="text-muted mb-0 h4">{{ caravan.transmission }}</p>
-                                <p class="text-muted mb-0 h4">120 KM</p>
                             </div>
                         </div>
-                        <div class="col-lg-4 text-center">
+                        <div class="col-lg-3 col-sm-6 text-center">
                             <div class="mt-5">
-                                <div class="mb-2"><i class="bi bi-calendar fs-1 text-primary"></i></div>
+                                <div class="mb-2"><img src="{% static "assets/img/calendar.png" %}" alt="Rok produkcji" height="50px" width="50px"></div>
                                 <h3 class="h4 mb-2">Rok produkcji</h3>
                                 <p class="text-muted mb-0 h4">{{ caravan.year_of_production }}</p>
                             </div>
@@ -206,11 +213,82 @@
                                 <textarea class="form-control" id="message" type="text" placeholder="Enter your message here..." style="height: 10rem" required name="message" maxlength="512"></textarea>
                                 <label for="message">Wiadomość</label>
                             </div>
+                            <!-- RODO check box -->  
+                            <div class="form-check mb-3">
+                                <input class="form-check-input" type="checkbox" value="" id="RODOCheckBox" required>
+                                <label class="form-check-label" for="RODOCheckBox">
+                                    Zapoznałem/am się z <a class="link" href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop"> [Polityką prywatności] </a> i wyrażam zgodę na przetwarzanie moich danych osobowych w celu uzyskania odpowiedzi na moje zapytanie.
+                                </label>
+                            </div>
                             <!-- Submit Button-->
-                            <div class="d-grid"><button class="btn btn-primary btn-xl" id="submitButton" type="submit" action="post">Wyślij</button></div>
+                            <div class="d-grid"><button class="btn btn-primary btn-xl" id="submitButton" type="submit" action="post">Wyślij</button></div> <!-- Button trigger modal -->
                         </form>
                     </div>
                 </div>
+                
+                <!-- Modal -->
+                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-xl">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">Polityka prywatności</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+
+                            <h2>1. Administrator danych</h2>
+                            <p>Administratorem danych osobowych jest FHU Partner Ryszard Nielipiński i Adrian Buchnat, z siedzibą w Sikroskiego 4 32-020 Wieliczka, e-mail: partneragd@vp.pl.</p>
+
+                            <h2>2. Cel i zakres przetwarzania danych</h2>
+                            <p>Dane osobowe użytkowników są zbierane wyłącznie w celu umożliwienia kontaktu poprzez formularz dostępny na stronie internetowej [nazwa strony internetowej/adres URL]. Dane te obejmują:</p>
+                            <ul>
+                                <li>imię i nazwisko,</li>
+                                <li>adres e-mail,</li>
+                                <li>numer telefonu,</li>
+                                <li>treść wiadomości.</li>
+                            </ul>
+                            <p>Podanie danych jest dobrowolne, lecz niezbędne do udzielenia odpowiedzi na przesłane zapytanie.</p>
+
+                            <h2>3. Podstawa prawna przetwarzania danych</h2>
+                            <p>Dane osobowe są przetwarzane zgodnie z przepisami RODO (Rozporządzenie o Ochronie Danych Osobowych). Podstawą przetwarzania danych jest zgoda osoby, której dane dotyczą (art. 6 ust. 1 lit. a RODO).</p>
+
+                            <h2>4. Odbiorcy danych</h2>
+                            <p>Dane osobowe mogą być udostępniane dostawcom usług technicznych, np. firmom hostingowym, tylko w zakresie niezbędnym do utrzymania funkcjonowania strony internetowej. Nie przekazujemy danych osobowych innym podmiotom bez zgody użytkownika, chyba że jest to wymagane przepisami prawa.</p>
+
+                            <h2>5. Okres przechowywania danych</h2>
+                            <p>Dane będą przechowywane przez okres niezbędny do odpowiedzi na zapytanie lub do czasu wycofania zgody. Po tym czasie dane mogą być przechowywane wyłącznie w celach archiwalnych, zgodnie z przepisami prawa.</p>
+
+                            <h2>6. Prawa użytkowników</h2>
+                            <p>Każdy użytkownik, którego dane są przetwarzane, ma prawo do:</p>
+                            <ul>
+                                <li>dostępu do swoich danych,</li>
+                                <li>sprostowania swoich danych,</li>
+                                <li>usunięcia swoich danych („prawo do bycia zapomnianym”),</li>
+                                <li>ograniczenia przetwarzania danych,</li>
+                                <li>przenoszenia danych,</li>
+                                <li>wycofania zgody na przetwarzanie danych w dowolnym momencie, bez wpływu na zgodność z prawem przetwarzania, którego dokonano na podstawie zgody przed jej wycofaniem,</li>
+                                <li>wniesienia skargi do organu nadzorczego (Prezesa Urzędu Ochrony Danych Osobowych).</li>
+                            </ul>
+                            <p>W celu realizacji powyższych praw należy skontaktować się z administratorem danych pod adresem e-mail: partneragd@vp.pl .</p>
+
+                            <h2>7. Zabezpieczenie danych</h2>
+                            <p>Dbamy o bezpieczeństwo danych osobowych użytkowników, stosując odpowiednie środki techniczne i organizacyjne, aby zabezpieczyć dane przed nieuprawnionym dostępem, utratą lub uszkodzeniem.</p>
+
+                            <h2>8. Pliki cookies</h2>
+                            <p>Strona nie stosuje plików cookies służących do śledzenia użytkowników. Jednak w przypadku korzystania z zewnętrznych usług, takich jak [np. Google Analytics, jeśli jest używany], pliki cookies mogą być stosowane w sposób opisany w polityce cookies tych usług.</p>
+
+                            <h2>9. Zmiany w Polityce Prywatności</h2>
+                            <p>Zastrzegamy sobie prawo do wprowadzania zmian w niniejszej Polityce Prywatności. Wszelkie zmiany zostaną opublikowane na tej stronie.</p>
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Zamknij</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+  
+
+
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-lg-4 text-center mb-5 mb-lg-0">
                         <i class="bi-phone fs-2 mb-3 text-muted"></i>
@@ -228,6 +306,7 @@
                     <a href="https://www.flaticon.com/free-icons/automotive" title="automotive icons">Automotive icons created by LAFS - Flaticon</a> 
                     <a href="https://www.flaticon.com/free-icons/automatic-transmission" title="automatic transmission icons">Automatic transmission icons created by Vitaly Gorbachev - Flaticon</a>
                     <a href="https://www.flaticon.com/free-icons/rv" title="RV icons">RV icons created by Dreamstale - Flaticon</a>
+                    <a href="https://www.flaticon.com/free-icons/people" title="people icons">People icons created by SBTS2018 - Flaticon</a>
                 </div>
             </div>
         </footer>
