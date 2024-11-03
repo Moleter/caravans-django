@@ -76,12 +76,12 @@ WSGI_APPLICATION = 'caravansProject.wsgi.application'
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "caravansdb",
-        "USER": "admin",
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": "CaravansApp",
+        "USER": "root",
         "PASSWORD": "admin",
-        "HOST": "127.0.0.1",
-        "PORT": "5432",
+        "HOST": "localhost",
+        "PORT": "3306",
     }
 }
 
