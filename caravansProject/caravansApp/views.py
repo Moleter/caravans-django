@@ -3,7 +3,6 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 from .models import Caravan, CaravanImages, MessageForm as MessageObject, Calendar
 from .forms import MessageForm
-from django.core import serializers
 
 # Create your views here.
 class HomePageView(TemplateView):
