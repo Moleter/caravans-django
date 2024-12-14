@@ -637,8 +637,8 @@ progress {
 
 .img-fluid {
   max-width: 100%;
+  opacity: 1;
   height: auto;
-  opacity: 0.8;
 }
 
 .img-thumbnail {
@@ -681,7 +681,16 @@ progress {
 }
 
 @media (min-width: 576px) {
-  .container-sm,
+  .containe491
+    filmów
+    Polubione
+    filmy
+    Prywatny
+    •
+    Playlista
+    Wyświetl
+    całą
+    playlistęr-sm,
   .container {
     max-width: 540px;
   }
@@ -11410,6 +11419,8 @@ header.masthead .h1 {
 }
 
 .img-fluid:hover {
-  transition: 0.25s ease-in-out;
-  opacity: 1;
+  transition: 0.4s ease-in-out;
+  /* scale: 1.01; */
+  /* border: solid #f4634a; */
+  box-shadow: 0 0 5px 3px lightcoral;
 }

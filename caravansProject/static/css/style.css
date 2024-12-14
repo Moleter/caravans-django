@@ -1,4 +1,4 @@
-.calendar {
+/* .calendar {
   color: white;
 }
 
@@ -54,7 +54,7 @@
   display: flex;
   flex-wrap: wrap;
 
-  /* padding: 0.4rem; */
+  padding: 0.4rem; 
 }
 
 .days div {
@@ -82,4 +82,80 @@
 
 .today {
   background-color: #a12020;
+} 
+
+*/
+
+#calendar {
+  display: flex;
+  flex-wrap: wrap;
+  /* overflow: hidden; */
+  gap: 10px;
+}
+
+.month {
+  background: #fff;
+  height: fit-content;
+  min-height: 421px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.monthName {
+  border-radius: 10px 10px 0px 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ff7626;
+  color: white;
+  padding: 10px 15px;
+  font-size: 22px;
+}
+
+.month .prev,
+.month .next {
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.days,
+.weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+  padding: 10px;
+  justify-items: stretch;
+  align-items: left;
+}
+
+.day-name {
+  gap: 5px;
+  padding: 5px;
+  font-weight: bold;
+  text-align: center;
+  color: #555;
+  margin-bottom: 5px;
+}
+
+.day {
+  text-align: center;
+  padding: 10px;
+  border-radius: 5px;
+  background: #f9f9f9;
+  color: #333;
+  cursor: pointer;
+}
+
+.day:hover {
+  background: #ff7626;
+  color: white;
+}
+
+.pickedDate {
+  background-color: #ff7626;
+  color: white;
+}
+
+.pickedDate:hover {
+  background-color: #aa4c15;
 }
