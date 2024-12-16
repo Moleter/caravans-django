@@ -55,5 +55,34 @@ datastart.addEventListener("change", () => {
       }-${actualdate.getDate()}`
     );
   }
-  console.log(actualdate);
 });
+
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        let daysPicekd = document.querySelectorAll(".pickedDate");
+        if (daysPicekd.length > 0) {
+          let year =
+            daysPicekd[0].parentElement.parentElement.childNodes[0]
+              .childNodes[1].textContent;
+          year = year.replace(/[^\d]/g, "");
+
+          let month = parseInt(daysPicekd[0].getAttribute("data-month")) + 1;
+          month < 10 ? (month = `0${month}`) : (month = `${month}`);
+
+          day = daysPicekd[0].textContent;
+          parseInt(day) < 10 ? (day = `0${day}`) : null;
+
+          datastart.value = `${year}-${month}-${day}`;
+        }
+      }
+    });
+  },
+  {
+    root: null,
+    threshold: 0.1,
+  }
+);
+
+observer.observe(document.getElementById("contactForm"));
