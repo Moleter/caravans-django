@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 from .models import Caravan, CaravanImages, MessageForm as MessageObject, Calendar
 from .forms import MessageForm
+from django.core.serializers import serialize
 
 # Create your views here.
 class HomePageView(TemplateView):
@@ -12,7 +13,7 @@ class HomePageView(TemplateView):
         context = super().get_context_data(**kwargs)
         context['caravans'] = Caravan.objects.all()
         context['images'] = CaravanImages.objects.all()
-        context['calendarDates'] = list(Calendar.objects.values("startDate", "endDate"))
+        context['calendarDates'] = list(Calendar.objects.values())
         return context
 
     def post(self, request):
@@ -22,9 +23,13 @@ class HomePageView(TemplateView):
             name = form["name"]
             email = form["email"]
             phone = form["phone"]
+            dateStart = form["dateStart"]
+            dateEnd = form["dateEnd"]
             message = form["message"]
 
-            new_message_Form = MessageObject(name=name, email=email, phone=phone, message=message)
+            print(dateStart, dateEnd)
+
+            new_message_Form = MessageObject(name=name, email=email, phone=phone, dateStart=dateStart, dateEnd=dateEnd, message=message)
             new_message_Form.save()
 
             return render(request=request, template_name=self.template_name, context={

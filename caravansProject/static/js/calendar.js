@@ -5,27 +5,38 @@ const data = JSON.parse(document.getElementById("calendarData").textContent);
 let startDate;
 let endDate;
 
+function caravanCheck() {
+  let CaravanSelected = document.querySelector("#caravanSelect");
+
+  return CaravanSelected.value;
+}
+
 const checkReservation = (day) => {
   for (let index = 0; index < data.length; index++) {
     const element = data[index];
+
     {
       startDate = new Date(element.startDate);
       endDate = new Date(element.endDate);
-      if (
-        date.getFullYear() === startDate.getFullYear() ||
-        date.getFullYear() === endDate.getFullYear()
-      ) {
+
+      if (caravanCheck() == element.caravan_id) {
         if (
-          date.getMonth() === startDate.getMonth() ||
-          date.getMonth() === endDate.getMonth()
+          date.getFullYear() === startDate.getFullYear() ||
+          date.getFullYear() === endDate.getFullYear()
         ) {
-          if (day >= startDate.getDate() && day <= endDate.getDate()) {
-            return true;
+          if (
+            date.getMonth() + 1 === startDate.getMonth() ||
+            date.getMonth() + 1 === endDate.getMonth()
+          ) {
+            if (day >= startDate.getDate() && day <= endDate.getDate()) {
+              return true;
+            }
           }
         }
       }
     }
   }
+  return false;
 };
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -96,15 +107,22 @@ document.addEventListener("DOMContentLoaded", () => {
     for (let day = 1; day <= daysInMonth; day++) {
       const dayDiv = document.createElement("div");
       dayDiv.classList.add("day");
-      dayDiv.setAttribute("data-month", date.getMonth());
-      dayDiv.innerText = day;
-      dayDiv.addEventListener("click", () => {
-        dayDiv.classList.toggle("pickedDate");
-        let pickedDays;
-        let days = document.querySelectorAll(".day");
 
-        if (!firstClick) {
-          pickedDays = document.querySelectorAll(".pickedDate");
+      dayDiv.setAttribute("data-month", date.getMonth());
+
+      if (checkReservation(day)) {
+        dayDiv.classList.remove("day");
+        dayDiv.classList.add("reservation");
+      }
+      dayDiv.innerText = day;
+      if (dayDiv.className === "day") {
+        dayDiv.addEventListener("click", () => {
+          dayDiv.classList.toggle("pickedDate");
+          let pickedDays;
+          let days = document.querySelectorAll(".day");
+
+          if (!firstClick) {
+            pickedDays = document.querySelectorAll(".pickedDate");
             days.forEach((day) => {
               if (
                 pickedDays[0].getAttribute("data-month") ===
@@ -132,17 +150,18 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
               }
             });
-        } else {
-          pickedDays = document.querySelectorAll(".pickedDate");
-          pickedDays.forEach((day) => {
-            day.classList.toggle("pickedDate");
-          });
-          pickedDays = null;
+          } else {
+            pickedDays = document.querySelectorAll(".pickedDate");
+            pickedDays.forEach((day) => {
+              day.classList.toggle("pickedDate");
+            });
+            pickedDays = null;
           }
-        firstClick ? (firstClick = false) : (firstClick = true);
+          firstClick ? (firstClick = false) : (firstClick = true);
 
           //TODO: Error wkonsoli
-      });
+        });
+      }
       daysContainer.appendChild(dayDiv);
     }
 

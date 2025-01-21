@@ -136,9 +136,7 @@
 
             <div class="container"> 
                 <!-- TODO: dodać nad kalendarze rozwijaną listę z możliwością wyboru kampera-->
-                <select class="form-select form-select-lg mb-3 mx-auto w-50" aria-label=".form-select-lg example">
-                    <option selected>Kamper</option>
-                    <option value="1">One</option>
+                <select id="caravanSelect" class="form-select form-select-lg mb-3 mx-auto w-50" aria-label=".form-select-lg example">
                     {% for caravan in caravans %}
                         <option value= {{caravan.id}}>{{caravan.name}}</option>
                     {% endfor %}
