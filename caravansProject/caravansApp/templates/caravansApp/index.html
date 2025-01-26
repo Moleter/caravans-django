@@ -135,7 +135,6 @@
         <section class="page-section bg-dark">
 
             <div class="container"> 
-                <!-- TODO: dodać nad kalendarze rozwijaną listę z możliwością wyboru kampera-->
                 <select id="caravanSelect" class="form-select form-select-lg mb-3 mx-auto w-50" aria-label=".form-select-lg example">
                     {% for caravan in caravans %}
                         <option value= {{caravan.id}}>{{caravan.name}}</option>
@@ -198,12 +197,12 @@
                             </div>
                             <!-- Dates for camper --> 
                             <div  class="form-floating mb-3">
-                                <input class="form-control" id="datastart" type="date" placeholder="" required name="datastart"/>
-                                <label for="datastart">Początkowa data zapytania</label>
+                                <input class="form-control" id="datastart" type="date" placeholder="" name="datastart"/>
+                                <label for="datastart">Początkowa data zapytania (MM-DD-RRRR)</label>
                             </div>
                             <div  class="form-floating mb-3">
-                                <input class="form-control" id="dataend" type="date" placeholder="" required name="dataend"/>
-                                <label for="dataend">Końcowa data zapytania</label>
+                                <input class="form-control" id="dataend" type="date" placeholder="" name="dataend"/>
+                                <label for="dataend">Końcowa data zapytania (MM-DD-RRRR)</label>
                             </div>
                             <!-- Message input-->
                             <div class="form-floating mb-3">

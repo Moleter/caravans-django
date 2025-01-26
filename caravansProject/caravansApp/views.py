@@ -18,26 +18,45 @@ class HomePageView(TemplateView):
 
     def post(self, request):
         form = MessageForm(request.POST or None)
+
         if form.is_valid():
             form = form.cleaned_data
             name = form["name"]
             email = form["email"]
             phone = form["phone"]
-            dateStart = form["dateStart"]
-            dateEnd = form["dateEnd"]
+            datastart = form["datastart"]
+            dataend = form["dataend"]
             message = form["message"]
 
-            print(dateStart, dateEnd)
+            print("Name:", name)
+            print("Email:", email)
+            print("Phone:", phone)
+            print("Start Date:", datastart)
+            print("End Date:", dataend)
+            print("Message:", message)
 
-            new_message_Form = MessageObject(name=name, email=email, phone=phone, dateStart=dateStart, dateEnd=dateEnd, message=message)
+            datastart = form.get("datastart") or None
+            dataend = form.get("dataend") or None
+
+            new_message_Form = MessageObject(
+                name=name,
+                email=email,
+                phone=phone,
+                datastart=datastart,
+                dataend=dataend,
+                message=message
+            )
             new_message_Form.save()
 
             return render(request=request, template_name=self.template_name, context={
                 **self.get_context_data(),
-                "success_message": "Wiadomość została wysłana pomyślnie, niedługo odpowiemy"})
+                "success_message": "Wiadomość została wysłana pomyślnie, niedługo odpowiemy"
+            })
 
         else:
+            print("Form errors:", form.errors)
             return render(request=request, template_name=self.template_name, context={
                 **self.get_context_data(),
-                "warning_message": "Wiadomość nie została wysłana, spróbuj ponownie za chwilę bądź skontaktuj się z nami telefonicznie"})
+                "warning_message": "Wiadomość nie została wysłana, spróbuj ponownie za chwilę bądź skontaktuj się z nami telefonicznie"
+            })
         

@@ -11,7 +11,7 @@ function caravanCheck() {
   return CaravanSelected.value;
 }
 
-const checkReservation = (day) => {
+const checkReservation = (day, currentDate) => {
   for (let index = 0; index < data.length; index++) {
     const element = data[index];
 
@@ -21,12 +21,12 @@ const checkReservation = (day) => {
 
       if (caravanCheck() == element.caravan_id) {
         if (
-          date.getFullYear() === startDate.getFullYear() ||
-          date.getFullYear() === endDate.getFullYear()
+          currentDate.getFullYear() === startDate.getFullYear() ||
+          currentDate.getFullYear() === endDate.getFullYear()
         ) {
           if (
-            date.getMonth() + 1 === startDate.getMonth() ||
-            date.getMonth() + 1 === endDate.getMonth()
+            currentDate.getMonth() === startDate.getMonth() ||
+            currentDate.getMonth() === endDate.getMonth()
           ) {
             if (day >= startDate.getDate() && day <= endDate.getDate()) {
               return true;
@@ -61,6 +61,11 @@ document.addEventListener("DOMContentLoaded", () => {
   let firstClick = false;
 
   loadCalendar(currentDate);
+
+  const caravanSelect = document.querySelector("#caravanSelect");
+  caravanSelect.addEventListener("change", () => {
+    loadCalendar(currentDate);
+  });
 
   function loadCalendar(date) {
     calendar.innerHTML = "";
@@ -110,7 +115,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       dayDiv.setAttribute("data-month", date.getMonth());
 
-      if (checkReservation(day)) {
+      if (checkReservation(day, date)) {
         dayDiv.classList.remove("day");
         dayDiv.classList.add("reservation");
       }

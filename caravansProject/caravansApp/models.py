@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from django.utils import timezone
 
 # Create your models here.
 class Caravan(models.Model):
@@ -33,7 +34,9 @@ class MessageForm(models.Model):
     name = models.CharField(_("Imię"), max_length=254)
     email = models.CharField(max_length=254)
     phone = models.CharField(_("Numer telefonu"), max_length=20)
+    datastart = models.DateField(_("Data początkowa"), null=True, blank=True)
+    dataend = models.DateField(_("Data końcowa"), null=True, blank=True)
     message = models.CharField(_("Wiadomość"), max_length=511)
 
     def __str__(self):
-        return f"{self.name} {self.email} {self.phone}"
+        return f"Wiadomość od {self.name} ({self.email})"

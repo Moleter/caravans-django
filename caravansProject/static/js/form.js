@@ -61,20 +61,41 @@ const observer = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        let daysPicekd = document.querySelectorAll(".pickedDate");
-        if (daysPicekd.length > 0) {
+        let daysPicked = document.querySelectorAll(".pickedDate");
+
+        if (daysPicked.length > 0) {
+          let firstDate = daysPicked[0];
           let year =
-            daysPicekd[0].parentElement.parentElement.childNodes[0]
-              .childNodes[1].textContent;
+            firstDate.parentElement.parentElement.childNodes[0].childNodes[1]
+              .textContent;
           year = year.replace(/[^\d]/g, "");
 
-          let month = parseInt(daysPicekd[0].getAttribute("data-month")) + 1;
+          let month = parseInt(firstDate.getAttribute("data-month")) + 1;
           month < 10 ? (month = `0${month}`) : (month = `${month}`);
 
-          day = daysPicekd[0].textContent;
+          let day = firstDate.textContent;
           parseInt(day) < 10 ? (day = `0${day}`) : null;
-
           datastart.value = `${year}-${month}-${day}`;
+
+          if (daysPicked.length > 1) {
+            let lastDate = daysPicked[daysPicked.length - 1];
+            let lastYear =
+              lastDate.parentElement.parentElement.childNodes[0].childNodes[1]
+                .textContent;
+            lastYear = lastYear.replace(/[^\d]/g, "");
+
+            let lastMonth = parseInt(lastDate.getAttribute("data-month")) + 1;
+            lastMonth < 10
+              ? (lastMonth = `0${lastMonth}`)
+              : (lastMonth = `${lastMonth}`);
+
+            let lastDay = lastDate.textContent;
+            parseInt(lastDay) < 10 ? (lastDay = `0${lastDay}`) : null;
+
+            dataend.value = `${lastYear}-${lastMonth}-${lastDay}`;
+          } else {
+            dataend.value = `${year}-${month}-${day}`;
+          }
         }
       }
     });
