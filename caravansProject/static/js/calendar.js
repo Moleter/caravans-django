@@ -132,7 +132,7 @@ document.addEventListener("DOMContentLoaded", () => {
                   parseInt(pickedDays[0].innerText) < parseInt(day.innerText) &&
                   parseInt(pickedDays[1].innerText) > parseInt(day.innerText) &&
                   pickedDays[0].getAttribute("data-month") ===
-                  day.getAttribute("data-month")
+                    day.getAttribute("data-month")
                 ) {
                   day.classList.toggle("pickedDate");
                 }
@@ -141,7 +141,7 @@ document.addEventListener("DOMContentLoaded", () => {
                   (pickedDays[0].getAttribute("data-month") ===
                     day.getAttribute("data-month") &&
                     parseInt(pickedDays[0].innerText) <
-                    parseInt(day.innerText)) ||
+                      parseInt(day.innerText)) ||
                   (pickedDays[1].getAttribute("data-month") ===
                     day.getAttribute("data-month") &&
                     parseInt(pickedDays[1].innerText) > parseInt(day.innerText))
