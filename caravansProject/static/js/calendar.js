@@ -55,7 +55,9 @@ document.addEventListener("DOMContentLoaded", () => {
     "Grudzień",
   ];
 
-  const calendar = document.querySelector("#calendar");
+  const calendar 
+
+= document.querySelector("#calendar");
   let currentDate = new Date();
 
   let firstClick = false;
